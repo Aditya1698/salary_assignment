@@ -1,4 +1,4 @@
-class CreateSalaryRecords < ActiveRecord::Migration[7.1]
+class CreateSalaryRecords < ActiveRecord::Migration[7.2]
   def change
     create_table :salary_records do |t|
       t.references :employee,    null: false, foreign_key: true
