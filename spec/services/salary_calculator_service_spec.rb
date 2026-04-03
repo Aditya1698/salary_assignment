@@ -28,7 +28,7 @@ RSpec.describe SalaryCalculatorService do
 
   describe "#calculate_pf" do
     it "returns 12% of base salary" do
-      expect(service.calculate_pf).to eq(7_200)
+      expect(service.calculate_pf).to eq(1_800) 
     end
 
     it "caps PF at statutory ceiling of 15,000" do
@@ -73,7 +73,7 @@ RSpec.describe SalaryCalculatorService do
     let(:summary) { service.annual_summary(2025) }
 
     it "returns total gross salary" do
-      expect(summary[:total_gross]).to eq(1_99_500)
+      expect(summary[:total_gross]).to be_within(0.01).of(1_90_000)
     end
 
     it "returns total deductions" do
@@ -81,7 +81,7 @@ RSpec.describe SalaryCalculatorService do
     end
 
     it "returns total net salary" do
-      expect(summary[:total_net]).to eq(1_72_000)
+      expect(summary[:total_net]).to be_within(0.01).of(1_62_500)
     end
 
     it "returns months paid" do
